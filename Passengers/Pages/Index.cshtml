@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Upload CSV File</h2>
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label for="csvFile">CSV File:</label>
+        <input type="file" id="csvFile" name="csvFile" />
+    </div>
+    <div>
+        <label for="classFilter">Classe:</label>
+        <input type="number" id="classFilter" name="classFilter" />
+    </div>
+    <div>
+        <label for="sexFilter">Sexo:</label>
+        <select id="sexFilter" name="sexFilter">
+            <option value="">Todos</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+        </select>
+    </div>
+    <div>
+        <label for="minAgeFilter">Idade Mínima:</label>
+        <input type="number" id="minAgeFilter" name="minAgeFilter" />
+    </div>
+    <div>
+        <label for="maxAgeFilter">Idade Máxima:</label>
+        <input type="number" id="maxAgeFilter" name="maxAgeFilter" />
+    </div>
+    <button type="submit">Upload</button>
+</form>
+
+
+@if (@Model.PassengerStatistics != null)
+{
+    <h3>Statistics:</h3>
+    <p>Sobreviventes: @Model.PassengerStatistics.SurvivedCount</p>
+    <p>Mortos: @Model.PassengerStatistics.DiedCount</p>
+    <p>Homens: @Model.PassengerStatistics.MaleCount</p>
+    <p>Mulheres: @Model.PassengerStatistics.FemaleCount</p>
+    <p>Média de idade: @Model.PassengerStatistics.AverageAge</p>
+}
